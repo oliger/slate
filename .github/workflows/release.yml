@@ -26,6 +26,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12.x
+          cache: yarn
           registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
@@ -39,11 +40,14 @@ jobs:
         if: matrix.channel == 'latest'
         uses: changesets/action@master
         with:
+          # defined in package.json#scripts
+          version: yarn changesetversion
           publish: yarn changeset publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       # https://github.com/atlassian/changesets/blob/master/docs/snapshot-releases.md
       - name: Release to @dev channel

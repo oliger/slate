@@ -49,7 +49,7 @@ function MyEditor() {
     // Implement custom event logic...
 
     // No matter the status of the event, treat event as *not* being handled by
-    // returning false, Slate will exectue its own event handler afterward
+    // returning false, Slate will execute its own event handler afterward
     return false;
   };
 
@@ -168,7 +168,7 @@ Get the target range from a DOM `event`.
 
 Find a Slate point from a DOM selection's `domNode` and `domOffset`.
 
-### `toSlateRange(editor: ReactEditor, domRange: DOMRange | DOMStaticRange | DOMSelection)`
+### `toSlateRange(editor: ReactEditor, domRange: DOMRange | DOMStaticRange | DOMSelection, options?: { exactMatch?: boolean } = {})`
 
 Find a Slate range from a DOM range or selection.
 
